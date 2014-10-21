@@ -1,0 +1,128 @@
+<html>
+
+	<!-- Latest compiled and minified CSS -->
+	<head>
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<style type="text/css">
+			.customClass {
+				background-color: blue;
+				color: yellow;
+			}
+			.selected {
+				background-color: blue;
+				color: yellow;
+			}
+			.customButton {
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="body">
+				
+				<div class="col-xs-12">
+					<div class="row" align="center">
+						<h1>LITTLE JS TEST CASES</h1>
+					</div>	
+				</div>	
+				<div class="col-xs-12">
+					<div class="row">
+						<div class="showClass panel"><p class="lead" style="padding:10px">The Element is visible</p></div>
+						<div class="panel panel-primary">
+						   <div class="panel-heading">
+						      <h3 class="panel-title">Hide and Show Text</h3>
+						   </div>
+						   <div class="panel-body">
+						      <button id="hideText" class="btn customButton">Hide Text</button>
+							  <button id="showText" class="btn customButton">Show Text</button>
+							  <button id="getDivValue" class="btn customButton">Get Div's Value</button>
+							  <button id="changeDivValue" class="btn customButton">Change Div Value</button>
+							  <button id="changeCSSProperty" class="btn customButton">Change  Div CSS Property</button>
+							  <button id="addCSSClass" class="btn customButton">Add CSS Class to Div</button>
+							  <button id="getCSSProperty" class="btn customButton">Get  Div CSS Property</button>
+							  <button id="removeCSSClass" class="btn customButton">Remove CSS Class to Div</button>
+						   </div>
+						</div>
+					</div>	
+					<br><br>
+					<div class="row">
+						<div class="panel panel-primary">
+						   <div class="panel-heading">
+						      <h3 class="panel-title">Alert Text Box Value</h3>
+						   </div>
+						   <div class="panel-body">
+						      <input type="text" id="inputText" class="form-control">
+						      <br>
+							  <button id="getValue" class="btn">Get Value</button>
+							  <button id="changeTextBoxAttr" class="btn">Change  Text Box Attribute (Value)</button>
+							  <button id="changeTextBoxValue" class="btn">Change  Text Box  Value</button>
+						   </div>
+						</div>
+					</div>	
+					
+					<br><br>
+					<div class="row">
+						<div class="panel panel-primary">
+						   <div class="panel-heading">
+						      <h3 class="panel-title">Alert Check Box Values</h3>
+						   </div>
+						   <div class="panel-body">
+								<div id="checkboxList" class="checkbox">
+									<label><input type="checkbox" name="mycheckbox" value="1">Value1</input></label><br>
+									<label><input type="checkbox" name="mycheckbox" value="2">Value2</input>
+									</label><br>
+									<label><input type="checkbox" name="mycheckbox" value="3">Value3</input>
+									</label><br>
+									<label><input type="checkbox" name="mycheckbox" value="4">Value4</input>
+									</label><br>
+									<br>
+									<button id="getCheckboxList"  class="btn">Get Checkbox List Values</button>
+								</div>
+						   </div>
+						</div>
+					</div>
+					<br><br>
+					<div class="row">
+						<div class="panel panel-primary">
+						   <div class="panel-heading">
+						      <h3 class="panel-title">Alert Select Box Values</h3>
+						   </div>
+						   <div class="panel-body">
+								<select id="select" class="form-control">
+								  <option value="volvo">Volvo</option>
+								  <option value="saab">Saab</option>
+								  <option value="mercedes">Mercedes</option>
+								  <option value="audi">Audi</option>
+								</select>
+								<br>
+								<button id="getSelectValue" class="btn">Get Select Value</button>
+						   </div>
+						</div>
+					</div>
+					<br><br>
+
+					<div class="row">
+						<div class="panel panel-primary">
+						   <div class="panel-heading">
+						      <h3 class="panel-title">Autocomplete</h3>
+						   </div>
+						   <div class="panel-body">
+								<input type="text" id="autocomplete" class="form-control">
+								<div id="resultList"></div>
+								<br>
+								<button id="getAutocompleteValue" class="btn">Get Auto-complete Value</button>
+						   </div>
+						</div>
+						
+					</div>
+					<br><br><br><br><br><br><br><br><br><br>
+				</div>
+			</div>	
+			<br><br>
+		</div>	
+
+	</body>	
+	<script src="js/little.js"></script>
+	<script src="js/test.js"></script>
+</html>
