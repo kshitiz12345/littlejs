@@ -45,8 +45,8 @@ little.addEventToElement('id', 'changeCSSProperty', 'click', function(){
 
 // get element's css property
 little.addEventToElement('id', 'getCSSProperty', 'click', function(){
-	alert(little.getCSSPropertyValue('class', 'showClass', 'height'));
-	alert(little.getCSSPropertyValue('class', 'showClass', 'background-color'));
+	alert('Height : ' + little.getCSSPropertyValue('class', 'showClass', 'height'));
+	alert('Background-color : ' + little.getCSSPropertyValue('class', 'showClass', 'background-color'));
 });
 
 // add css class to element
@@ -98,6 +98,20 @@ little.getAutocompleteSelectedValue = function(value) {
 little.addEventToElement('id', 'getAutocompleteValue', 'click', function(){
 	alert(selectedValue);
 });
+
+
+
+// scroll to given position
+little.addEventToElement('id', 'scroll', 'click', function(){
+	little.scrollVertically(little.getElementValue('id', 'distFromTop'), little.getElementValue('id', 'speed'));
+});
+
+
+// scroll to given position
+little.addEventToElement('id', 'fixThis', 'click', function(){
+	little.fixElementOnScroll('id', 'toBeFixed', 300);
+});
+
 
 
 
