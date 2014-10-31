@@ -73,19 +73,22 @@ little.addEventToElement('id', 'getSelectValue', 'click', func);
 
 // implement autocomplete
 var autocompleteCallback = function(text, callback, args) {
-	var arr = ['result1', 'result2', 'result3'];
+	var json = {1:'result1', 2: 'result2', 3:'result3'};
 	var data = [];
-	var temp = 1;
-	arr.forEach(function(each) {
-		if(each.indexOf(text) >= 0)  {
-			var json = {};
-			json['id'] = temp;
-			json['label'] = each;
-			temp++;
-			data.push(json);
+	for(each in json) {
+		var res = json[each];
+		if(res.indexOf(text) >= 0)  {
+			var tempJson = {};
+			tempJson['id'] = each;
+			tempJson['label'] = res;
+
+			data.push(tempJson);
  		}
-	});
+	};
 	callback(data, args);
+
+	
+	
 };
 
 little.implementAutoComplete({'type':'id', 'reference':'autocomplete', 'resultReference':'resultList', 'callback':autocompleteCallback});
@@ -103,13 +106,13 @@ little.addEventToElement('id', 'getAutocompleteValue', 'click', function(){
 
 // scroll to given position
 little.addEventToElement('id', 'scroll', 'click', function(){
-	little.scrollVertically(little.getElementValue('id', 'distFromTop'), little.getElementValue('id', 'speed'));
+	little.scrollVertically(little.getElementValue('id', 'distFromTop1'), little.getElementValue('id', 'speed'));
 });
 
 
-// scroll to given position
+// fix element while scrolling
 little.addEventToElement('id', 'fixThis', 'click', function(){
-	little.fixElementOnScroll('id', 'toBeFixed', 300);
+	little.fixElementOnScroll('id', 'toBeFixed', little.getElementValue('id', 'distFromTop'));
 });
 
 
