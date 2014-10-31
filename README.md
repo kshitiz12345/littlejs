@@ -3,7 +3,8 @@ littlejs
 
 Little javascript library for providing basic DOM manipulations.
 
-Its a simple set of functions which can help web developers to add basic DOM manipulation effect to the website without using jquery. It can be useful for simple single page applications where for simple DOM related tasks, adding whole jquery doesn't make sense.
+It is a set of JS functions covering most common usages for DOM manipulation.
+The functions are in vanilla JS and can be removed from the library easily in case not required, thus keeping required helpers.
 
 
 
@@ -40,5 +41,13 @@ Search results will be passed as an array of JSON objects. Each JSON will have i
 12) addCSSClass and removeCSSClass : For adding / removing css class. Currently has compatibility issues with < IE 10 and for now only single class name can be passed.
 
 13) getElementCSSPropertyValue : To get css property value of an element. Returned value will be an array.
+
+14) scrollVertically : To scroll to a perticular location vertically. The first parameter is distance in pixels from top where you get scolled to and second parameter is slowness factor (higher value, more slower)
+
+15) fixElementOnScroll : To fix a given element on scrolling down. With id and reference as first two parameters, third parameter is distance in pixels from top after which the element should freeze while scrolling down.
+
+15) addPropertiesToSuperFunc : Add properties to a function's prototype.
+
+16) inheritObjectFromAnother : Making second passed parameter prototype of the first one.
 
 PLEASE DO NOT REMOVE ELEMENTBASE AND GETELEMENT PROPERTIES.
