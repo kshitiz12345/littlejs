@@ -28,7 +28,8 @@ var littleJS = function() {
  					var urlPara = '';
  					var obj = args.data;
 					for ( var key in obj) {
-            			if(obj.hasOwnProperty(key))	urlPara = urlPara + key + '=' + obj[key] + '&';
+            			if(obj.hasOwnProperty(key))	
+            				urlPara = urlPara + key + '=' + obj[key] + '&';
 					}
 					return urlPara.substring(0, urlPara.length - 1);
 				})(args.data);
@@ -106,7 +107,7 @@ var littleJS = function() {
 			},
 
 			showElement : function(type, reference, userDefinedDisplayClass) {
-        	var display;
+        		var display;
 				if (!this.previousDisplayStatus[type + reference] && !userDefinedDisplayClass)
 					display = this.defaultDisplayClass;
 				else
@@ -167,24 +168,18 @@ var littleJS = function() {
 			var listIdPrefix = 'resultList';
 			var defaultInterval = 50;
 			var showHideResultList = function(type, reference, resultReference) {
-				try {
-					var clickFunc = function(k) {
-						if (k.target.id == reference || k.target.id == resultReference) {
-							if (little.getElementValue(type, reference)[0].trim().length) {
-								little.displayElement.showElement('id', resultReference);
-							} else {
-								little.displayElement.hideElement('id', resultReference);
-							}
+				var clickFunc = function(k) {
+					if (k.target.id == reference || k.target.id == resultReference) {
+						if (little.getElementValue(type, reference)[0].trim().length) {
+							little.displayElement.showElement('id', resultReference);
 						} else {
 							little.displayElement.hideElement('id', resultReference);
 						}
-					};
-					document.addEventListener('click', clickFunc);
-
-				} catch (e) {
-					console.log(e);
-				}
-
+					} else {
+						little.displayElement.hideElement('id', resultReference);
+					}
+				};
+				document.addEventListener('click', clickFunc);
 			};
 			var autoCompleteResultList = function(data, newVars) {
 				try {
