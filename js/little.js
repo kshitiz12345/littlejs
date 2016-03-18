@@ -1,4 +1,4 @@
-/* getElement, elementBase must be included */
+/* getElement must be included */
 var littleJS = function() {
   
   "use strict";
@@ -56,6 +56,10 @@ var littleJS = function() {
 						}
 						if (little.stopAjaxFunc)
 							little.stopAjaxFunc();
+					} else {
+						callback(xmlhttp.statusText);
+						if (little.stopAjaxFunc)
+							little.stopAjaxFunc();
 					}
 				};
 				if (little.startAjaxFunc)
@@ -65,21 +69,16 @@ var littleJS = function() {
 		},
 
 
-		elementBase : function() {
-			var processElement = function(element, callback) {
-				if (typeof (element.length) !== 'undefined') {
-					var length = element.length;
-					for ( var i = 0; i < length; i++) {
-						var singleElement = element[i];
-						callback(singleElement);
-					}
-				} else {
-					callback(element);
+		processElement : function(element, callback) {
+			if (typeof (element.length) !== 'undefined') {
+				var length = element.length;
+				for ( var i = 0; i < length; i++) {
+					var singleElement = element[i];
+					callback(singleElement);
 				}
-			};
-			return {
-				'processElement' : processElement
-			};
+			} else {
+				callback(element);
+			}
 		},
 
 
@@ -100,7 +99,7 @@ var littleJS = function() {
 					this.previousDisplayStatus[type + reference] = currentDisplayStatus;
 				var display = 'none';
 				var element = little.getElement(type, reference);
-				little.elementBase().processElement(element,
+				little.processElement(element,
 						function(element) {
 							element.style.display = display;
 						});
@@ -115,7 +114,7 @@ var littleJS = function() {
 
 				var element = little.getElement(type, reference);
 				if(element)
-					little.elementBase().processElement(element,
+					little.processElement(element,
 							function(element) {
 								element.style.display = display;
 							});
@@ -128,7 +127,7 @@ var littleJS = function() {
 			var element = little.getElement(type, reference);
       		var data = [];
 			if(element) {
-				little.elementBase().processElement(element, function(element) {
+				little.processElement(element, function(element) {
 					data.push(element.value);
 				});
 			  }	
@@ -144,7 +143,7 @@ var littleJS = function() {
 			var element = little.getElement(type, reference);
       		var data = [];
 			if(element) {
-				little.elementBase().processElement(element, function(element) {
+				little.processElement(element, function(element) {
 					data.push(element.innerHTML);
 				});
 			   }		
@@ -340,7 +339,7 @@ var littleJS = function() {
 		setElementAttribute : function (type, reference, attribute, value) {
 			var element = little.getElement(type, reference);
 			if(element)
-				little.elementBase().processElement(element, function(element) {
+				little.processElement(element, function(element) {
 					element.setAttribute(attribute, value);
 				});
 			else 
@@ -354,12 +353,12 @@ var littleJS = function() {
 			var element = little.getElement(type, reference);
 			if(element)
 				if(typeof(effect) === 'string') {
-					little.elementBase().processElement(element, function(element) {
+					little.processElement(element, function(element) {
 						element.addEventListener(effect, action);
 					});
 				} else {
 					var length = effect.length;
-          			var processElement = little.elementBase().processElement;
+          			var processElement = little.processElement;
 					for(var i=0;i < length; i++) {
 							processElement(element, function(element) {
 						   	element.addEventListener(effect[i], action);
@@ -374,12 +373,12 @@ var littleJS = function() {
 			var element = little.getElement(type, reference);
 			if(element)
 				if(typeof(effect) === 'string') {
-					little.elementBase().processElement(element, function(element) {
+					little.processElement(element, function(element) {
 						element.removeEventListener(effect, action);
 					});
 				} else {
 					var length = effect.length;
-          			var processElement = little.elementBase().processElement;          
+          			var processElement = little.processElement;          
 					for(var i=0;i < length; i++) {
 							processElement(element, function(element) {
 							element.removeEventListener(effect[i], action);
@@ -394,7 +393,7 @@ var littleJS = function() {
 		createNewDataInElement : function (type, reference, data) {
 			var element = little.getElement(type, reference);
 			if(element)
-				little.elementBase().processElement(element, function(element) {
+				little.processElement(element, function(element) {
 					element.innerHTML = data;
 				});
 			else 
@@ -405,7 +404,7 @@ var littleJS = function() {
 		setElementValue : function (type, reference, data) {
 			var element = little.getElement(type, reference);
 			if (element)
-				little.elementBase().processElement(element, function(element) {
+				little.processElement(element, function(element) {
 					element.value = data;
 				});
 			else 
@@ -417,7 +416,7 @@ var littleJS = function() {
 			var element = little.getElement(type, reference);
 			className = ' ' + className;
 			if(element)
-				little.elementBase().processElement(element, function(element) {
+				little.processElement(element, function(element) {
 					element.className += className;
 				});
 			else 
@@ -427,7 +426,7 @@ var littleJS = function() {
 		removeCSSClass : function (type, reference, className) {
 			var element = little.getElement(type, reference);
 			if(element)
-				little.elementBase().processElement(element, function(element) {
+				little.processElement(element, function(element) {
 					var find = className;
 					var re = new RegExp(find, 'g');
 					element.className = element.className.replace(re, '');
@@ -441,7 +440,7 @@ var littleJS = function() {
 			var element = little.getElement(type, reference);
 			var data = [];
 			if(element)
-				little.elementBase().processElement(
+				little.processElement(
 						element,
 						function(element) {
 							if (element.currentStyle)
@@ -459,7 +458,7 @@ var littleJS = function() {
 		changeCSSPropertyValue : function (type, reference, property, value) {
 			var element = little.getElement(type, reference);
 			if(element)
-				little.elementBase().processElement(
+				little.processElement(
 						element,
 						function(element) {
 							element.style[property] = value;
